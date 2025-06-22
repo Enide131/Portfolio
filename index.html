@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ruslan Hrytsun – Portfolio</title>
   <style>
     body {
@@ -17,9 +17,40 @@
       color: #fff;
       padding: 2rem;
       text-align: center;
+      position: relative;
     }
     header h1 {
       margin: 0;
+    }
+    .language-switcher {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .lang-btn {
+      background: #007acc;
+      border: none;
+      color: white;
+      font-weight: bold;
+      padding: 0.3rem 0.7rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 5px rgba(0, 122, 204, 0.4);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+    }
+    .lang-btn:hover {
+      background: #005f99;
+      transform: scale(1.1);
+    }
+    .lang-btn.active {
+      background: #004f7f;
+      box-shadow: 0 0 10px #004f7f;
+      cursor: default;
+      transform: scale(1.1);
     }
     .about {
       padding: 2rem;
@@ -57,42 +88,47 @@
 </head>
 <body>
   <header>
-    <h1>Ruslan Hrytsun</h1>
-    <p>Beginner Web Developer</p>
+    <h1 id="name">Ruslan Hrytsun</h1>
+    <p id="role">Beginner Web Developer</p>
+
+    <div class="language-switcher" role="group" aria-label="Select language">
+      <button class="lang-btn active" id="btn-en" aria-pressed="true">ENG</button>
+      <button class="lang-btn" id="btn-sk" aria-pressed="false">SK</button>
+    </div>
   </header>
 
   <section class="about">
-    <p>👋 Hi! I'm a beginner developer exploring the world of web programming, with a focus on JavaScript.</p>
-    <p>💡 Passionate about frontend, modern technologies, and always learning something new.</p>
-    <p>🚀 Here you'll find my practice projects, experiments, and first steps in coding.</p>
+    <p id="about1">👋 Hi! I'm a beginner developer exploring the world of web programming, with a focus on JavaScript.</p>
+    <p id="about2">💡 Passionate about frontend, modern technologies, and always learning something new.</p>
+    <p id="about3">🚀 Here you'll find my practice projects, experiments, and first steps in coding.</p>
   </section>
 
   <section class="projects">
-    <h2>Projects</h2>
+    <h2 id="projectsTitle">Projects</h2>
     
     <div class="project">
       <h3>🌍 Travel Blog</h3>
-      <p>A travel-themed mini blog website built with JavaScript and Google Sign-In.</p>
+      <p id="travelBlogDesc">A travel-themed mini blog website built with JavaScript and Google Sign-In.</p>
       <p>
-        <a href="https://github.com/Enide131/travel-blog" target="_blank">Source code</a> | 
-        <a href="https://Enide131.github.io/travel-blog/" target="_blank">Live site</a>
+        <a href="https://github.com/Enide131/travel-blog" target="_blank" id="travelBlogSource">Source code</a> | 
+        <a href="https://Enide131.github.io/travel-blog/" target="_blank" id="travelBlogLive">Live site</a>
       </p>
     </div>
 
     <div class="project">
       <h3>✅ Todo Bot (Telegram)</h3>
-      <p>A Telegram bot that helps users manage personal tasks, with notifications and PostgreSQL storage.</p>
+      <p id="todoBotDesc">A Telegram bot that helps users manage personal tasks, with notifications and PostgreSQL storage.</p>
       <p>
-        <a href="https://github.com/Enide131/todo-bot" target="_blank">Source code</a>
+        <a href="https://github.com/Enide131/todo-bot" target="_blank" id="todoBotSource">Source code</a>
       </p>
     </div>
 
     <div class="project">
       <h3>🖱️ Clicker Game</h3>
-      <p>Interactive clicker game built with JavaScript featuring incremental money counting, auto-clickers, upgrades, and persistent saving using localStorage.</p>
+      <p id="clickerDesc">Interactive clicker game built with JavaScript featuring incremental money counting, auto-clickers, upgrades, and persistent saving using localStorage.</p>
       <p>
-        <a href="https://github.com/Enide131/clicker" target="_blank">Source code</a> | 
-        <a href="https://Enide131.github.io/clicker/" target="_blank">Live demo</a>
+        <a href="https://github.com/Enide131/clicker" target="_blank" id="clickerSource">Source code</a> | 
+        <a href="https://Enide131.github.io/clicker/" target="_blank" id="clickerLive">Live demo</a>
       </p>
     </div>
     
@@ -101,5 +137,75 @@
   <footer>
     &copy; 2025 Ruslan Hrytsun
   </footer>
+
+  <script>
+    const translations = {
+      sk: {
+        role: "Začiatočník webový vývojár",
+        about1: "👋 Ahoj! Som začiatočník vo vývoji a objavujem svet webového programovania, so zameraním na JavaScript.",
+        about2: "💡 Nadšený pre frontend, moderné technológie a neustále sa učím nové veci.",
+        about3: "🚀 Tu nájdete moje cvičné projekty, experimenty a prvé kroky v kódovaní.",
+        projectsTitle: "Projekty",
+        travelBlogDesc: "Mini blogová stránka s témou cestovania postavená pomocou JavaScriptu a Google Sign-In.",
+        travelBlogSource: "Zdrojový kód",
+        travelBlogLive: "Živá stránka",
+        todoBotDesc: "Telegram bot, ktorý pomáha používateľom spravovať osobné úlohy, s notifikáciami a úložiskom PostgreSQL.",
+        todoBotSource: "Zdrojový kód",
+        clickerDesc: "Interaktívna clicker hra vytvorená v JavaScripte, so zvyšujúcim sa počítaním peňazí, automatickými klikermi, vylepšeniami a uložením pomocou localStorage.",
+        clickerSource: "Zdrojový kód",
+        clickerLive: "Živá demo",
+      },
+      en: {
+        role: "Beginner Web Developer",
+        about1: "👋 Hi! I'm a beginner developer exploring the world of web programming, with a focus on JavaScript.",
+        about2: "💡 Passionate about frontend, modern technologies, and always learning something new.",
+        about3: "🚀 Here you'll find my practice projects, experiments, and first steps in coding.",
+        projectsTitle: "Projects",
+        travelBlogDesc: "A travel-themed mini blog website built with JavaScript and Google Sign-In.",
+        travelBlogSource: "Source code",
+        travelBlogLive: "Live site",
+        todoBotDesc: "A Telegram bot that helps users manage personal tasks, with notifications and PostgreSQL storage.",
+        todoBotSource: "Source code",
+        clickerDesc: "Interactive clicker game built with JavaScript featuring incremental money counting, auto-clickers, upgrades, and persistent saving using localStorage.",
+        clickerSource: "Source code",
+        clickerLive: "Live demo",
+      }
+    };
+
+    const btnEn = document.getElementById('btn-en');
+    const btnSk = document.getElementById('btn-sk');
+
+    function setLanguage(lang) {
+      document.getElementById('role').textContent = translations[lang].role;
+      document.getElementById('about1').textContent = translations[lang].about1;
+      document.getElementById('about2').textContent = translations[lang].about2;
+      document.getElementById('about3').textContent = translations[lang].about3;
+      document.getElementById('projectsTitle').textContent = translations[lang].projectsTitle;
+      document.getElementById('travelBlogDesc').textContent = translations[lang].travelBlogDesc;
+      document.getElementById('travelBlogSource').textContent = translations[lang].travelBlogSource;
+      document.getElementById('travelBlogLive').textContent = translations[lang].travelBlogLive;
+      document.getElementById('todoBotDesc').textContent = translations[lang].todoBotDesc;
+      document.getElementById('todoBotSource').textContent = translations[lang].todoBotSource;
+      document.getElementById('clickerDesc').textContent = translations[lang].clickerDesc;
+      document.getElementById('clickerSource').textContent = translations[lang].clickerSource;
+      document.getElementById('clickerLive').textContent = translations[lang].clickerLive;
+
+      if(lang === 'en') {
+        btnEn.classList.add('active');
+        btnEn.setAttribute('aria-pressed', 'true');
+        btnSk.classList.remove('active');
+        btnSk.setAttribute('aria-pressed', 'false');
+      } else {
+        btnSk.classList.add('active');
+        btnSk.setAttribute('aria-pressed', 'true');
+        btnEn.classList.remove('active');
+        btnEn.setAttribute('aria-pressed', 'false');
+      }
+    }
+
+    btnEn.addEventListener('click', () => setLanguage('en'));
+    btnSk.addEventListener('click', () => setLanguage('sk'));
+  </script>
 </body>
 </html>
+
