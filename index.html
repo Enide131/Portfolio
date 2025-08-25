@@ -131,7 +131,20 @@
         <a href="https://Enide131.github.io/clicker/" target="_blank" id="clickerLive">Live demo</a>
       </p>
     </div>
-    
+
+    <div class="project">
+      <h3>🐦 Flappy Birds (Unity, WebGL)</h3>
+      <p id="flappyDesc">
+      An arcade 2D Flappy Birds clone built in Unity: Rigidbody2D physics, velocity-based tilt,
+      procedural pipes, increasing difficulty, sound effects, scoring with saved best score,
+      and a WebGL build playable in the browser.
+      </p>
+      <p>
+        <a href="https://github.com/Enide131/Flappy-Birds" target="_blank" id="flappySource">Source code</a> |
+        <a href="https://Enide131.github.io/Flappy-Birds/" target="_blank" id="flappyLive">Play online</a>
+      </p>
+    </div>
+
   </section>
 
   <footer>
@@ -154,6 +167,9 @@
         clickerDesc: "Interaktívna clicker hra vytvorená v JavaScripte, so zvyšujúcim sa počítaním peňazí, automatickými klikermi, vylepšeniami a uložením pomocou localStorage.",
         clickerSource: "Zdrojový kód",
         clickerLive: "Živá demo",
+        flappyDesc: "Arkádová 2D hra vo Unity (Flappy Birds): fyzika Rigidbody2D, náklon podľa rýchlosti, procedurálne rúry, postupne rastúca náročnosť, zvukové efekty, skóre s uloženým rekordom a WebGL verzia hrateľná v prehliadači.",
+        flappySource: "Zdrojový kód",
+        flappyLive: "Hrať online",
       },
       en: {
         role: "Beginner Web Developer",
@@ -169,6 +185,9 @@
         clickerDesc: "Interactive clicker game built with JavaScript featuring incremental money counting, auto-clickers, upgrades, and persistent saving using localStorage.",
         clickerSource: "Source code",
         clickerLive: "Live demo",
+        flappyDesc: "An arcade 2D Flappy Birds clone built in Unity: Rigidbody2D physics, velocity-based tilt, procedural pipes, increasing difficulty, sound effects, scoring with saved best score, and a WebGL build playable in the browser.",
+        flappySource: "Source code",
+        flappyLive: "Play online",
       }
     };
 
@@ -189,6 +208,9 @@
       document.getElementById('clickerDesc').textContent = translations[lang].clickerDesc;
       document.getElementById('clickerSource').textContent = translations[lang].clickerSource;
       document.getElementById('clickerLive').textContent = translations[lang].clickerLive;
+      document.getElementById('flappyDesc').textContent   = translations[lang].flappyDesc;
+      document.getElementById('flappySource').textContent = translations[lang].flappySource;
+      document.getElementById('flappyLive').textContent   = translations[lang].flappyLive;
 
       if(lang === 'en') {
         btnEn.classList.add('active');
