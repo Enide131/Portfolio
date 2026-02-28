@@ -19,78 +19,24 @@
       text-align: center;
       position: relative;
     }
-    header h1 {
-      margin: 0;
-    }
-    .language-switcher {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      display: flex;
-      gap: 0.5rem;
-    }
+    header h1 { margin: 0; }
+    .language-switcher { position: absolute; top: 1rem; right: 1rem; display:flex; gap:.5rem }
     .lang-btn {
-      background: #007acc;
-      border: none;
-      color: white;
-      font-weight: bold;
-      padding: 0.3rem 0.7rem;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      box-shadow: 0 2px 5px rgba(0, 122, 204, 0.4);
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      user-select: none;
+      background: #007acc; border: none; color: white; font-weight: bold;
+      padding: .3rem .7rem; border-radius:5px; cursor:pointer; font-size:.9rem;
     }
-    .lang-btn:hover {
-      background: #005f99;
-      transform: scale(1.1);
-    }
-    .lang-btn.active {
-      background: #004f7f;
-      box-shadow: 0 0 10px #004f7f;
-      cursor: default;
-      transform: scale(1.1);
-    }
-    .about {
-      padding: 2rem;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .projects {
-      background: #fff;
-      padding: 2rem;
-      max-width: 800px;
-      margin: 2rem auto;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    .project {
-      margin-bottom: 1.5rem;
-    }
-    .project h3 {
-      margin: 0;
-    }
-    .project a {
-      color: #007acc;
-      text-decoration: none;
-    }
-    .project a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9em;
-      color: #666;
-    }
+    .lang-btn.active { background:#004f7f }
+    .about { padding: 2rem; max-width:800px; margin:0 auto }
+    .projects { background:#fff; padding:2rem; max-width:800px; margin:2rem auto; border-radius:10px }
+    .project { margin-bottom:1.5rem }
+    .project a { color:#007acc }
+    footer { text-align:center; padding:1rem; color:#666 }
   </style>
 </head>
 <body>
   <header>
     <h1 id="name">Ruslan Hrytsun</h1>
     <p id="role">Beginner Web Developer</p>
-
     <div class="language-switcher" role="group" aria-label="Select language">
       <button class="lang-btn active" id="btn-en" aria-pressed="true">ENG</button>
       <button class="lang-btn" id="btn-sk" aria-pressed="false">SK</button>
@@ -105,13 +51,22 @@
 
   <section class="projects">
     <h2 id="projectsTitle">Projects</h2>
-    
+
     <div class="project">
       <h3>🌍 Travel Blog</h3>
       <p id="travelBlogDesc">A travel-themed mini blog website built with JavaScript and Google Sign-In.</p>
       <p>
-        <a href="https://github.com/Enide131/travel-blog" target="_blank" id="travelBlogSource">Source code</a> | 
+        <a href="https://github.com/Enide131/travel-blog" target="_blank" id="travelBlogSource">Source code</a> |
         <a href="https://Enide131.github.io/travel-blog/" target="_blank" id="travelBlogLive">Live site</a>
+      </p>
+    </div>
+
+    <div class="project">
+      <h3>📐 LPSolver — Linear Programming Solver</h3>
+      <p id="lpsolverDesc">LPSolver is an interactive web app for modeling and solving linear programming problems. It provides a clean UI to enter an objective function and constraints, visualizes step-by-step solution traces (simplex / Bland rule), and supports exporting and printable reports. Built with React and Vite.</p>
+      <p>
+        <a href="https://github.com/Enide131/Figma-TypeScript-University-Project" target="_blank" id="lpsolverSource">Source code</a> |
+        <a href="https://Enide131.github.io/Figma-TypeScript-University-Project/" target="_blank" id="lpsolverLive">Live demo</a>
       </p>
     </div>
 
@@ -127,18 +82,14 @@
       <h3>🖱️ Clicker Game</h3>
       <p id="clickerDesc">Interactive clicker game built with JavaScript featuring incremental money counting, auto-clickers, upgrades, and persistent saving using localStorage.</p>
       <p>
-        <a href="https://github.com/Enide131/clicker" target="_blank" id="clickerSource">Source code</a> | 
+        <a href="https://github.com/Enide131/clicker" target="_blank" id="clickerSource">Source code</a> |
         <a href="https://Enide131.github.io/clicker/" target="_blank" id="clickerLive">Live demo</a>
       </p>
     </div>
 
     <div class="project">
       <h3>🐦 Flappy Birds (Unity, WebGL)</h3>
-      <p id="flappyDesc">
-      An arcade 2D Flappy Birds clone built in Unity: Rigidbody2D physics, velocity-based tilt,
-      procedural pipes, increasing difficulty, sound effects, scoring with saved best score,
-      and a WebGL build playable in the browser.
-      </p>
+      <p id="flappyDesc">An arcade 2D Flappy Birds clone built in Unity with a WebGL build playable in the browser.</p>
       <p>
         <a href="https://github.com/Enide131/FlappyBird" target="_blank" id="flappySource">Source code</a> |
         <a href="https://Enide131.github.io/FlappyBird/" target="_blank" id="flappyLive">Play online</a>
@@ -161,6 +112,9 @@
         travelBlogDesc: "Mini blogová stránka s témou cestovania postavená pomocou JavaScriptu a Google Sign-In.",
         travelBlogSource: "Zdrojový kód",
         travelBlogLive: "Živá stránka",
+        lpsolverDesc: "LPSolver je interaktívna webová aplikácia pre моделювання та розв'язування задач лінійного програмування. Забезпечує зручний інтерфейс для введення цільової функції та обмежень, візуалізацію покрокового рішення (simplex / Bland rule) та експорт результатів для звітів.",
+        lpsolverSource: "Zdrojový kód",
+        lpsolverLive: "Živá demo",
         todoBotDesc: "Telegram bot, ktorý pomáha používateľom spravovať osobné úlohy, s notifikáciami a úložiskom PostgreSQL.",
         todoBotSource: "Zdrojový kód",
         clickerDesc: "Interaktívna clicker hra vytvorená v JavaScripte, so zvyšujúcim sa počítaním peňazí, automatickými klikermi, vylepšeniami a uložením pomocou localStorage.",
@@ -179,6 +133,9 @@
         travelBlogDesc: "A travel-themed mini blog website built with JavaScript and Google Sign-In.",
         travelBlogSource: "Source code",
         travelBlogLive: "Live site",
+        lpsolverDesc: "LPSolver is an interactive web app for modeling and solving linear programming problems. It provides a clean UI to enter an objective function and constraints, visualizes step-by-step solution traces (simplex / Bland rule), and supports exporting and printable reports. Built with React and Vite.",
+        lpsolverSource: "Source code",
+        lpsolverLive: "Live demo",
         todoBotDesc: "A Telegram bot that helps users manage personal tasks, with notifications and PostgreSQL storage.",
         todoBotSource: "Source code",
         clickerDesc: "Interactive clicker game built with JavaScript featuring incremental money counting, auto-clickers, upgrades, and persistent saving using localStorage.",
@@ -202,6 +159,9 @@
       document.getElementById('travelBlogDesc').textContent = translations[lang].travelBlogDesc;
       document.getElementById('travelBlogSource').textContent = translations[lang].travelBlogSource;
       document.getElementById('travelBlogLive').textContent = translations[lang].travelBlogLive;
+      document.getElementById('lpsolverDesc').textContent = translations[lang].lpsolverDesc;
+      document.getElementById('lpsolverSource').textContent = translations[lang].lpsolverSource;
+      document.getElementById('lpsolverLive').textContent = translations[lang].lpsolverLive;
       document.getElementById('todoBotDesc').textContent = translations[lang].todoBotDesc;
       document.getElementById('todoBotSource').textContent = translations[lang].todoBotSource;
       document.getElementById('clickerDesc').textContent = translations[lang].clickerDesc;
@@ -229,4 +189,3 @@
   </script>
 </body>
 </html>
-
