@@ -3,180 +3,374 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ruslan Hrytsun – Portfolio</title>
+  <meta name="description" content="Ruslan Hrytsun — junior programmer portfolio and CV." />
+  <title>Ruslan Hrytsun – Programmer Portfolio</title>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f7f7f7;
-      color: #333;
+    :root {
+      --primary: #007acc;
+      --primary-dark: #005f99;
+      --text: #263238;
+      --muted: #607d8b;
+      --surface: #fff;
+      --background: #f3f6f8;
+      --border: #dce5ea;
     }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--primary); }
+    a:hover { color: var(--primary-dark); }
+
     header {
-      background: #222;
+      background: linear-gradient(135deg, #17212b, #263238);
       color: #fff;
-      padding: 2rem;
+      padding: 4.5rem 1.5rem 3.5rem;
       text-align: center;
       position: relative;
     }
-    header h1 { margin: 0; }
-    .language-switcher { position: absolute; top: 1rem; right: 1rem; display:flex; gap:.5rem }
-    .lang-btn {
-      background: #007acc; border: none; color: white; font-weight: bold;
-      padding: .3rem .7rem; border-radius:5px; cursor:pointer; font-size:.9rem;
+
+    header h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.5rem); }
+    header p { margin: .5rem 0 1.5rem; color: #c8d6de; font-size: 1.2rem; }
+
+    .language-switcher {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: .4rem;
     }
-    .lang-btn.active { background:#004f7f }
-    .about { padding: 2rem; max-width:800px; margin:0 auto }
-    .projects { background:#fff; padding:2rem; max-width:800px; margin:2rem auto; border-radius:10px }
-    .project { margin-bottom:1.5rem }
-    .project a { color:#007acc }
-    footer { text-align:center; padding:1rem; color:#666 }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid #90caf9;
+      color: #fff;
+      font-weight: 700;
+      padding: .45rem .75rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .lang-btn:hover,
+    .lang-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .container {
+      width: min(100% - 2rem, 960px);
+      margin: 0 auto;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .7rem;
+    }
+
+    .contact-links a,
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      border-radius: 7px;
+      padding: .65rem 1rem;
+      font-weight: 600;
+    }
+
+    .contact-links a {
+      color: #fff;
+      border: 1px solid #78909c;
+    }
+
+    .contact-links a:hover { background: rgba(255, 255, 255, .12); color: #fff; }
+
+    main { padding: 2rem 0; }
+
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 16px rgba(38, 50, 56, .05);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #173b4d;
+      border-bottom: 2px solid #e6eef2;
+      padding-bottom: .6rem;
+    }
+
+    .intro p { margin: .6rem 0; }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skills li {
+      background: #e8f4fb;
+      color: #075985;
+      border-radius: 999px;
+      padding: .35rem .8rem;
+      font-size: .95rem;
+    }
+
+    .project {
+      border-left: 4px solid var(--primary);
+      padding: .2rem 0 .2rem 1rem;
+      margin: 0 0 2rem;
+    }
+
+    .project:last-child { margin-bottom: 0; }
+    .project h3 { margin: 0; }
+    .project p { margin: .6rem 0; }
+
+    .tech {
+      color: var(--muted);
+      font-size: .95rem;
+      font-weight: 600;
+    }
+
+    .project-links { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+    .button {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .button:hover { background: var(--primary-dark); color: #fff; }
+    .button.secondary { background: #e8f4fb; color: #075985; }
+    .button.secondary:hover { background: #d3ebf8; }
+
+    .education-item { margin-bottom: 1rem; }
+    .education-item:last-child { margin-bottom: 0; }
+    .education-item strong { display: block; }
+    .muted { color: var(--muted); }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 600px) {
+      header { padding-top: 5rem; }
+      .language-switcher { right: .75rem; }
+      section { padding: 1.3rem; }
+      .contact-links a { width: 100%; }
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1 id="name">Ruslan Hrytsun</h1>
-    <p id="role">Beginner Web Developer</p>
     <div class="language-switcher" role="group" aria-label="Select language">
-      <button class="lang-btn active" id="btn-en" aria-pressed="true">ENG</button>
-      <button class="lang-btn" id="btn-sk" aria-pressed="false">SK</button>
+      <button class="lang-btn active" id="btn-en" type="button" aria-pressed="true">EN</button>
+      <button class="lang-btn" id="btn-sk" type="button" aria-pressed="false">SK</button>
     </div>
+    <h1>Ruslan Hrytsun</h1>
+    <p id="role">Aspiring Programmer</p>
+    <nav class="contact-links" aria-label="Contact links">
+      <a href="mailto:ruslan150306@gmail.com">Email</a>
+      <a href="https://github.com/Enide131" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="#projects" id="viewProjects">View projects</a>
+    </nav>
   </header>
 
-  <section class="about">
-    <p id="about1">👋 Hi! I'm a beginner developer exploring the world of web programming, with a focus on JavaScript.</p>
-    <p id="about2">💡 Passionate about frontend, modern technologies, and always learning something new.</p>
-    <p id="about3">🚀 Here you'll find my practice projects, experiments, and first steps in coding.</p>
-  </section>
+  <main class="container">
+    <section class="intro">
+      <h2 id="aboutTitle">About me</h2>
+      <p id="about1">Hello! I'm a beginner programmer interested in software development and problem-solving. I enjoy turning ideas into working applications and learning how different technologies work together.</p>
+      <p id="about2">I am currently learning JavaScript, TypeScript, React, databases, Telegram bots and Unity. I build small projects to strengthen my programming fundamentals and gain practical experience.</p>
+      <p id="about3">I am motivated, curious and open to feedback. My goal is to grow into a reliable software developer and contribute to real-world projects.</p>
+    </section>
 
-  <section class="projects">
-    <h2 id="projectsTitle">Projects</h2>
+    <section>
+      <h2 id="skillsTitle">Technologies I am learning</h2>
+      <ul class="skills">
+        <li>JavaScript</li>
+        <li>TypeScript</li>
+        <li>React</li>
+        <li>HTML &amp; CSS</li>
+        <li>Vite</li>
+        <li>Git &amp; GitHub</li>
+        <li>PostgreSQL</li>
+        <li>Telegram Bot API</li>
+        <li>Unity</li>
+        <li>C#</li>
+        <li>C</li>
+      </ul>
+      <p class="muted" id="learning">I have beginner-level experience with these technologies and continue learning through practice projects.</p>
+    </section>
 
-    <div class="project">
-      <h3>🌍 Travel Blog</h3>
-      <p id="travelBlogDesc">A travel-themed mini blog website built with JavaScript and Google Sign-In.</p>
-      <p>
-        <a href="https://github.com/Enide131/travel-blog" target="_blank" id="travelBlogSource">Source code</a> |
-        <a href="https://Enide131.github.io/travel-blog/" target="_blank" id="travelBlogLive">Live site</a>
-      </p>
-    </div>
+    <section id="projects">
+      <h2 id="projectsTitle">Selected projects</h2>
 
-    <div class="project">
-      <h3>📐 LPSolver — Linear Programming Solver</h3>
-      <p id="lpsolverDesc">LPSolver is an interactive web app for modeling and solving linear programming problems. It provides a clean UI to enter an objective function and constraints, visualizes step-by-step solution traces (simplex / Bland rule), and supports exporting and printable reports. Built with React and Vite.</p>
-      <p>
-        <a href="https://github.com/Enide131/Figma-TypeScript-University-Project" target="_blank" id="lpsolverSource">Source code</a> |
-        <a href="https://Enide131.github.io/Figma-TypeScript-University-Project/" target="_blank" id="lpsolverLive">Live demo</a>
-      </p>
-    </div>
+      <article class="project">
+        <h3>🌍 Travel Blog</h3>
+        <p id="travelBlogDesc">A travel-themed blog that demonstrates frontend development, page structure, interactive JavaScript functionality and Google Sign-In integration. The project helped me practise user interaction and publishing a website with GitHub Pages.</p>
+        <p class="tech">JavaScript · HTML · CSS · Google Sign-In</p>
+        <div class="project-links">
+          <a class="button secondary" href="https://github.com/Enide131/travel-blog" target="_blank" rel="noopener noreferrer" id="travelBlogSource">Source code</a>
+          <a class="button" href="https://Enide131.github.io/travel-blog/" target="_blank" rel="noopener noreferrer" id="travelBlogLive">Live site</a>
+        </div>
+      </article>
 
-    <div class="project">
-      <h3>✅ Todo Bot (Telegram)</h3>
-      <p id="todoBotDesc">A Telegram bot that helps users manage personal tasks, with notifications and PostgreSQL storage.</p>
-      <p>
-        <a href="https://github.com/Enide131/todoBot" target="_blank" id="todoBotSource">Source code</a>
-      </p>
-    </div>
+      <article class="project">
+        <h3>📐 LPSolver — Linear Programming Solver</h3>
+        <p id="lpsolverDesc">An interactive application for modelling and solving linear programming problems. Users can enter an objective function and constraints, inspect step-by-step simplex or Bland rule solution traces, and export printable reports. This project demonstrates React component design, TypeScript and algorithm-focused problem-solving.</p>
+        <p class="tech">React · TypeScript · Vite · Algorithms</p>
+        <div class="project-links">
+          <a class="button secondary" href="https://github.com/Enide131/Figma-TypeScript-University-Project" target="_blank" rel="noopener noreferrer" id="lpsolverSource">Source code</a>
+          <a class="button" href="https://Enide131.github.io/Figma-TypeScript-University-Project/" target="_blank" rel="noopener noreferrer" id="lpsolverLive">Live demo</a>
+        </div>
+      </article>
 
-    <div class="project">
-      <h3>🐦 Flappy Birds (Unity, WebGL)</h3>
-      <p id="flappyDesc">An arcade 2D Flappy Birds clone built in Unity with a WebGL build playable in the browser.</p>
-      <p>
-        <a href="https://github.com/Enide131/FlappyBird" target="_blank" id="flappySource">Source code</a> |
-        <a href="https://Enide131.github.io/FlappyBird/" target="_blank" id="flappyLive">Play online</a>
-      </p>
-    </div>
-  </section>
+      <article class="project">
+        <h3>✅ Todo Bot for Telegram</h3>
+        <p id="todoBotDesc">A Telegram bot for managing personal tasks. It supports task creation and notifications while storing user data in PostgreSQL. The project gave me practical experience with backend logic, database operations and working with an external API.</p>
+        <p class="tech">JavaScript · Telegram Bot API · PostgreSQL</p>
+        <div class="project-links">
+          <a class="button secondary" href="https://github.com/Enide131/todoBot" target="_blank" rel="noopener noreferrer" id="todoBotSource">Source code</a>
+        </div>
+      </article>
+
+      <article class="project">
+        <h3>🐦 Flappy Birds</h3>
+        <p id="flappyDesc">A 2D arcade game created in Unity and exported to WebGL. It includes Rigidbody2D physics, velocity-based rotation, procedural pipes, increasing difficulty, sound effects, scoring and a saved best score. The browser version is playable online.</p>
+        <p class="tech">Unity · C# · 2D physics · WebGL</p>
+        <div class="project-links">
+          <a class="button secondary" href="https://github.com/Enide131/FlappyBird" target="_blank" rel="noopener noreferrer" id="flappySource">Source code</a>
+          <a class="button" href="https://Enide131.github.io/FlappyBird/" target="_blank" rel="noopener noreferrer" id="flappyLive">Play online</a>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <h2 id="educationTitle">Education</h2>
+      <div class="education-item">
+        <strong id="educationName">Second-year university student</strong>
+        <span class="muted" id="educationDetails">Applied Informatics</span>
+      </div>
+      <p class="muted" id="educationNote">I am currently in my second year at STU, in the Faculty of Electrical Engineering and Information Technology (FEI), majoring in Applied Informatics.</p>
+    </section>
+
+    <section>
+      <h2 id="contactTitle">Let’s work together</h2>
+      <p id="contactText">I am open to junior opportunities, internships and interesting programming projects.</p>
+      <a class="button" href="mailto:ruslan150306@gmail.com" id="contactButton">Contact me</a>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 Ruslan Hrytsun
+    &copy; 2026 Ruslan Hrytsun
   </footer>
 
   <script>
     const translations = {
-      sk: {
-        role: "Začiatočník webový vývojár",
-        about1: "👋 Ahoj! Som začiatočník vo vývoji a objavujem svet webového programovania, so zameraním na JavaScript.",
-        about2: "💡 Nadšený pre frontend, moderné technológie a neustále sa učím nové veci.",
-        about3: "🚀 Tu nájdete moje cvičné projekty, experimenty a prvé kroky v kódovaní.",
-        projectsTitle: "Projekty",
-        travelBlogDesc: "Mini blogová stránka s témou cestovania postavená pomocou JavaScriptu a Google Sign-In.",
-        travelBlogSource: "Zdrojový kód",
-        travelBlogLive: "Živá stránka",
-        lpsolverDesc: "LPSolver je interaktívna webová aplikácia na TypeScript",
-        lpsolverSource: "Zdrojový kód",
-        lpsolverLive: "Živá demo",
-        todoBotDesc: "Telegram bot, ktorý pomáha používateľom spravovať osobné úlohy, s notifikáciami a úložiskom PostgreSQL.",
-        todoBotSource: "Zdrojový kód",
-        clickerDesc: "Interaktívna clicker hra vytvorená v JavaScripte, so zvyšujúcim sa počítaním peňazí, automatickými klikermi, vylepšeniami a uložením pomocou localStorage.",
-        clickerSource: "Zdrojový kód",
-        clickerLive: "Živá demo",
-        flappyDesc: "Arkádová 2D hra vo Unity (Flappy Birds): fyzika Rigidbody2D, náklon podľa rýchlosti, procedurálne rúry, postupne rastúca náročnosť, zvukové efekty, skóre s uloženým rekordom a WebGL verzia hrateľná v prehliadači.",
-        flappySource: "Zdrojový kód",
-        flappyLive: "Hrať online",
-      },
       en: {
-        role: "Beginner Web Developer",
-        about1: "👋 Hi! I'm a beginner developer exploring the world of web programming, with a focus on JavaScript.",
-        about2: "💡 Passionate about frontend, modern technologies, and always learning something new.",
-        about3: "🚀 Here you'll find my practice projects, experiments, and first steps in coding.",
-        projectsTitle: "Projects",
-        travelBlogDesc: "A travel-themed mini blog website built with JavaScript and Google Sign-In.",
+        role: "Aspiring Programmer",
+        viewProjects: "View projects",
+        aboutTitle: "About me",
+        about1: "Hello! I'm a beginner programmer interested in software development and problem-solving. I enjoy turning ideas into working applications and learning how different technologies work together.",
+        about2: "I am currently learning JavaScript, TypeScript, React, databases, Telegram bots and Unity. I build small projects to strengthen my programming fundamentals and gain practical experience.",
+        about3: "I am motivated, curious and open to feedback. My goal is to grow into a reliable software developer and contribute to real-world projects.",
+        skillsTitle: "Technologies I am learning",
+        learning: "I have beginner-level experience with these technologies and continue learning through practice projects.",
+        projectsTitle: "Selected projects",
+        travelBlogDesc: "A travel-themed blog that demonstrates frontend development, page structure, interactive JavaScript functionality and Google Sign-In integration. The project helped me practise user interaction and publishing a website with GitHub Pages.",
         travelBlogSource: "Source code",
         travelBlogLive: "Live site",
-        lpsolverDesc: "LPSolver is an interactive web app for modeling and solving linear programming problems. It provides a clean UI to enter an objective function and constraints, visualizes step-by-step solution traces (simplex / Bland rule), and supports exporting and printable reports. Built with React and Vite.",
+        lpsolverDesc: "An interactive application for modelling and solving linear programming problems. Users can enter an objective function and constraints, inspect step-by-step simplex or Bland rule solution traces, and export printable reports. This project demonstrates React component design, TypeScript and algorithm-focused problem-solving.",
         lpsolverSource: "Source code",
         lpsolverLive: "Live demo",
-        todoBotDesc: "A Telegram bot that helps users manage personal tasks, with notifications and PostgreSQL storage.",
+        todoBotDesc: "A Telegram bot for managing personal tasks. It supports task creation and notifications while storing user data in PostgreSQL. The project gave me practical experience with backend logic, database operations and working with an external API.",
         todoBotSource: "Source code",
-        clickerDesc: "Interactive clicker game built with JavaScript featuring incremental money counting, auto-clickers, upgrades, and persistent saving using localStorage.",
-        clickerSource: "Source code",
-        clickerLive: "Live demo",
-        flappyDesc: "An arcade 2D Flappy Birds clone built in Unity: Rigidbody2D physics, velocity-based tilt, procedural pipes, increasing difficulty, sound effects, scoring with saved best score, and a WebGL build playable in the browser.",
+        flappyDesc: "A 2D arcade game created in Unity and exported to WebGL. It includes Rigidbody2D physics, velocity-based rotation, procedural pipes, increasing difficulty, sound effects, scoring and a saved best score. The browser version is playable online.",
         flappySource: "Source code",
         flappyLive: "Play online",
+        educationTitle: "Education",
+        educationName: "Second-year university student",
+        educationDetails: "Applied Informatics",
+        educationNote: "I am currently in my second year at STU, in the Faculty of Electrical Engineering and Information Technology (FEI), majoring in Applied Informatics.",
+        contactTitle: "Let’s work together",
+        contactText: "I am open to junior opportunities, internships and interesting programming projects.",
+        contactButton: "Contact me"
+      },
+      sk: {
+        role: "Začínajúci programátor",
+        viewProjects: "Zobraziť projekty",
+        aboutTitle: "O mne",
+        about1: "Ahoj! Som začínajúci programátor so záujmom o vývoj softvéru a riešenie problémov. Baví ma premieňať nápady na fungujúce aplikácie a učiť sa, ako spolupracujú rôzne technológie.",
+        about2: "Momentálne sa učím JavaScript, TypeScript, React, databázy, Telegram boty a Unity. Tvorím malé projekty, aby som si zlepšil programátorské základy a získal praktické skúsenosti.",
+        about3: "Som motivovaný, zvedavý a otvorený spätnej väzbe. Mojím cieľom je stať sa spoľahlivým softvérovým vývojárom a pracovať na reálnych projektoch.",
+        skillsTitle: "Technológie, ktoré sa učím",
+        learning: "S týmito technológiami mám začiatočnícke skúsenosti a ďalej sa učím prostredníctvom praktických projektov.",
+        projectsTitle: "Vybrané projekty",
+        travelBlogDesc: "Cestovateľský blog, na ktorom som si precvičil frontend, štruktúru stránky, interaktívny JavaScript a integráciu Google Sign-In. Projekt mi pomohol získať skúsenosti s používateľskou interakciou a publikovaním stránky cez GitHub Pages.",
+        travelBlogSource: "Zdrojový kód",
+        travelBlogLive: "Živá stránka",
+        lpsolverDesc: "Interaktívna aplikácia na modelovanie a riešenie problémov lineárneho programovania. Používateľ môže zadať účelovú funkciu a obmedzenia, sledovať riešenie krok za krokom pomocou simplexovej metódy alebo Blandovho pravidla a exportovať tlačiteľné reporty. Projekt ukazuje prácu s Reactom, TypeScriptom a algoritmami.",
+        lpsolverSource: "Zdrojový kód",
+        lpsolverLive: "Živé demo",
+        todoBotDesc: "Telegram bot na správu osobných úloh. Podporuje vytváranie úloh a notifikácie a ukladá údaje používateľov v PostgreSQL. Vďaka projektu som získal skúsenosti s backendovou logikou, databázami a externým API.",
+        todoBotSource: "Zdrojový kód",
+        flappyDesc: "Arkádová 2D hra vytvorená v Unity a exportovaná do WebGL. Obsahuje fyziku Rigidbody2D, otáčanie podľa rýchlosti, procedurálne rúry, rastúcu náročnosť, zvukové efekty, skóre a uložený rekord. Verzia pre prehliadač je dostupná online.",
+        flappySource: "Zdrojový kód",
+        flappyLive: "Hrať online",
+        educationTitle: "Vzdelanie",
+        educationName: "Student druhého ročníka vysokej školy",
+        educationDetails: "Aplikovaná Informatika",
+        educationNote: "Momentálne som v druhom ročníku na STU, na Fakulte elektrotechniky a informatiky (FEI), v študijnom odbore Aplikovaná Informatika.",
+        contactTitle: "Spolupracujme",
+        contactText: "Som otvorený juniorským pozíciám, stážam a zaujímavým programátorským projektom.",
+        contactButton: "Kontaktujte ma"
       }
     };
 
-    const btnEn = document.getElementById('btn-en');
-    const btnSk = document.getElementById('btn-sk');
+    const ids = [
+      "role", "viewProjects", "aboutTitle", "about1", "about2", "about3",
+      "skillsTitle", "learning", "projectsTitle", "travelBlogDesc",
+      "travelBlogSource", "travelBlogLive", "lpsolverDesc", "lpsolverSource",
+      "lpsolverLive", "todoBotDesc", "todoBotSource", "flappyDesc",
+      "flappySource", "flappyLive", "educationTitle", "educationName",
+      "educationDetails", "educationNote", "contactTitle", "contactText",
+      "contactButton"
+    ];
+
+    const btnEn = document.getElementById("btn-en");
+    const btnSk = document.getElementById("btn-sk");
 
     function setLanguage(lang) {
-      document.getElementById('role').textContent = translations[lang].role;
-      document.getElementById('about1').textContent = translations[lang].about1;
-      document.getElementById('about2').textContent = translations[lang].about2;
-      document.getElementById('about3').textContent = translations[lang].about3;
-      document.getElementById('projectsTitle').textContent = translations[lang].projectsTitle;
-      document.getElementById('travelBlogDesc').textContent = translations[lang].travelBlogDesc;
-      document.getElementById('travelBlogSource').textContent = translations[lang].travelBlogSource;
-      document.getElementById('travelBlogLive').textContent = translations[lang].travelBlogLive;
-      document.getElementById('lpsolverDesc').textContent = translations[lang].lpsolverDesc;
-      document.getElementById('lpsolverSource').textContent = translations[lang].lpsolverSource;
-      document.getElementById('lpsolverLive').textContent = translations[lang].lpsolverLive;
-      document.getElementById('todoBotDesc').textContent = translations[lang].todoBotDesc;
-      document.getElementById('todoBotSource').textContent = translations[lang].todoBotSource;
-      document.getElementById('clickerDesc').textContent = translations[lang].clickerDesc;
-      document.getElementById('clickerSource').textContent = translations[lang].clickerSource;
-      document.getElementById('clickerLive').textContent = translations[lang].clickerLive;
-      document.getElementById('flappyDesc').textContent   = translations[lang].flappyDesc;
-      document.getElementById('flappySource').textContent = translations[lang].flappySource;
-      document.getElementById('flappyLive').textContent   = translations[lang].flappyLive;
+      ids.forEach((id) => {
+        document.getElementById(id).textContent = translations[lang][id];
+      });
 
-      if(lang === 'en') {
-        btnEn.classList.add('active');
-        btnEn.setAttribute('aria-pressed', 'true');
-        btnSk.classList.remove('active');
-        btnSk.setAttribute('aria-pressed', 'false');
-      } else {
-        btnSk.classList.add('active');
-        btnSk.setAttribute('aria-pressed', 'true');
-        btnEn.classList.remove('active');
-        btnEn.setAttribute('aria-pressed', 'false');
-      }
+      const isEnglish = lang === "en";
+      btnEn.classList.toggle("active", isEnglish);
+      btnEn.setAttribute("aria-pressed", String(isEnglish));
+      btnSk.classList.toggle("active", !isEnglish);
+      btnSk.setAttribute("aria-pressed", String(!isEnglish));
+      document.documentElement.lang = lang;
     }
 
-    btnEn.addEventListener('click', () => setLanguage('en'));
-    btnSk.addEventListener('click', () => setLanguage('sk'));
+    btnEn.addEventListener("click", () => setLanguage("en"));
+    btnSk.addEventListener("click", () => setLanguage("sk"));
   </script>
 </body>
 </html>
